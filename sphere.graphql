@@ -1,0 +1,126 @@
+query SphereQueryPairs($first: Int = 5) {
+  pairs(first: $first) {
+    id
+    price
+    token0 {
+      id
+      symbol
+      name
+      decimals
+    }
+    token1 {
+      id
+      symbol
+      name
+      decimals
+    }
+    totalVolumeToken0
+    totalVolumeToken1
+    change24H
+    high24H
+    low24H
+    volumeToken024H
+    volumeToken124H
+  }
+}
+
+query SphereQueryTokens($first: Int = 10) {
+  tokens(first: $first) {
+    id
+    symbol
+    name
+    decimals
+  }
+}
+query SphereQueryHistoryWallets(
+  $Address: ID = "0x0000000000000000000000000000000000000000"
+) {
+  historyWallets(
+    orderBy: transaction__timestamp
+    orderDirection: desc
+    where: { from_: { id: $Address } }
+  ) {
+    id
+    from {
+      id
+    }
+    token {
+      id
+      name
+      symbol
+    }
+    amount
+    to {
+      id
+    }
+    action
+    transaction {
+      id
+      timestamp
+    }
+  }
+}
+
+query SphereQueryHistoryOrders(
+  $Address: ID = "0x0000000000000000000000000000000000000000"
+) {
+  historyOrders(
+    orderBy: date
+    orderDirection: desc
+    where: { trader_: { id: $Address } }
+  ) {
+    id
+    trader {
+      id
+    }
+    type
+    action
+    isBuy
+    amount
+    price
+    executed
+    date
+    pair {
+      id
+      token0 {
+        symbol
+      }
+      token1 {
+        symbol
+      }
+    }
+  }
+}
+query SphereQueryHistoryMarkets(
+  $Pair: ID = "0x0000000000000000000000000000000000000000"
+) {
+  historyMarkets(
+    orderBy: date
+    orderDirection: desc
+    where: { pair_: { id: $Pair } }
+  ) {
+    id
+    isBuy
+    amount
+    price
+    date
+    pair {
+      id
+    }
+  }
+}
+
+query SphereQueryDatasPair(
+  $Pair: ID = "0x0000000000000000000000000000000000000000"
+) {
+  pair(id: $Pair) {
+    token0 {
+      id
+      symbol
+    }
+    token1 {
+      id
+      symbol
+    }
+  }
+}

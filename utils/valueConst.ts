@@ -1,0 +1,10 @@
+export const HardCodePairOrder = '0xa36d1e2e61fdb175d9a45cbb2eadfb1f1f2686ae'
+export const HardCodeTokne0 = '0x697E9835be58C6C6cDd6D4cbD998E0bD5bb2d05f'
+export const HardCodeTokne1 = '0xf9529E6c0951eFa422d96Ca39f8EE582054fd55d'
+export const HardCodeSymbol0 = 'BTC'
+export const HardCodeSymbol1 = 'USDT'
+export const SymbolToken = 'BTC'
+export const RPCNETWORK = 'https://bsc-testnet.publicnode.com'
+export const MainChainID = 97
+export const Fee = 0.1
+export const urlScan = 'https://testnet.bscscan.com'
